@@ -30,7 +30,7 @@
     props: ['scores'],
     data () {
       return {
-        src: 'dist/imgs/'
+        src: 'assets/imgs/'
       }
     }
   }
