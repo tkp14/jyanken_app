@@ -1,5 +1,7 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import Vue from 'vue';
+import Router from 'vue-router';
+const Game = () => import("./components/Game.vue");
+const Score = () => import("./components/Score.vue");
 
 Vue.use(Router);
 
@@ -9,12 +11,20 @@ export default new Router({
     {
       path: '/',
       name: 'game',
-      component: Game
+      components: {
+        default: Game
+      }
     },
     {
       path: '/score',
       name: 'score',
-      component: Score
+      components: {
+        default: Score
+      }
+    },
+    {
+      path: '*',
+      redirect: '/'
     }
   ]
-})
+});

@@ -3,7 +3,7 @@
     <h2>せいせき</h2>
     <button type="button" @click.prevent="dataReset">クリア</button>
     <ul v-if="scores">
-      <li v-for="(score, i) of $parent.$data.scores">
+      <li v-for="(score, i) of $parent.$data.scores" v-bind:key="score.id">
         <span>{{ (i + 1) }}:</span>
         {{ score.message }}
       </li>
@@ -23,7 +23,7 @@ export default {
       this.$parent.$data.scores = [];
     }
   }
-};
+}
 </script>
 
 <style scoped>

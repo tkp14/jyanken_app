@@ -4,37 +4,35 @@
       <h2>{{ resultMessage }}</h2>
       <button @click="start">もう一度</button>
     </div>
-
-    <div class="imgArea"><img :src="src" alt="">
-      <ul>
-        <li>
-          <button @click="onSelected" class="button" type="button" value="0">グー</button>
-        </li>
-        <li>
-          <button @click="onSelected" class="button" type="button" value="1">チョキ</button>
-        </li>
-        <li>
-          <button @click="onSelected" class="button" type="button" value="2">パー</button>
-        </li>
-      </ul>
-    </div>
+    <div class="imgArea"><img :src="src" alt=""></div>
+    <ul>
+      <li>
+        <button @click="onSelected" class="button" type="button" value="0">グー</button>
+      </li>
+      <li>
+        <button @click="onSelected" class="button" type="button" value="1">チョキ</button>
+      </li>
+      <li>
+        <button @click="onSelected" class="button" type="button" value="2">パー</button>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
-  import Storage from "../util/storage";
-  let storage = new Storage();
+
+
 
   export default {
     name: 'game',
     props: ['scores'],
     data () {
       return {
-        src: 'assets/imgs/janken_choki.png',
+        src: '@/assets/imgs/janken_choki.png',
         imgList: [
-          'assets/imgs/janken_choki.png',
-          'assets/imgs/janken_pa.png',
-          'assets/imgs/janken_gu.png'
+          require('@/assets/imgs/janken_choki.png'),
+          require('@/assets/imgs/janken_pa.png'),
+          require('@/assets/imgs/janken_gu.png')
         ],
         timer: null,
         resultMessage: ''
@@ -56,7 +54,7 @@
         this.reset();
         this.timer = setInterval(() => {
           this.changeImg();
-        }, (1000 / 12));
+        }, 100);
       },
       onSelected(e) {
         clearInterval(this.timer);
@@ -92,14 +90,14 @@
       decisionJanken(myHand, youHand) {
         let result = 0; // 0は負け、1は勝ち、2は引き分け
         switch(myHand) {
-          case '0':
-            console.log('負け！！！！！');
+          case 'myHand(0)':
+            youHand(1);
             break;
-          case '1':
-            console.log('勝ち');
+          case 'myHand(1)':
+            youHand(0);
             break;
-          case '3':
-            console.log('引き分け');
+          case 'myHand(2)':
+            youHand(2);
             break;
           //ジャンケンの判定
         }
@@ -110,5 +108,21 @@
 </script>
 
 <style scoped>
+#game {
+  margin: 0 auto;
+}
 
+img {
+  width: 50ox;
+  height: 50px;
+}
+
+ul {
+  display: inline-flex;
+  list-style: none;
+  padding: 0;
+}
+li {
+  margin: 10px;
+}
 </style>

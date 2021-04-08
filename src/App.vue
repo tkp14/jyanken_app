@@ -1,34 +1,36 @@
 <template>
   <div id="app">
     <h1>じゃんけんゲーム</h1>
-    <game scores="scores"></game>
-    <score scores="scores"></score>
+    <ul class="nav">
+      <li><router-link to="/">ゲーム</router-link></li>
+      <li><router-link to="/score">スコア</router-link></li>
+    </ul>
+    <div class="inner">
+      <transition name="fade">
+        <router-view scores="scores"></router-view>
+      </transition>
+    </div>
   </div>
 </template>
 
 <script>
-import Game from "./components/game";
-import Score from "./components/score";
-import Storage from "./util/storage";
-let storage = new Storage();
 
 export default {
   name: 'app',
-  data() {
+  data () {
     return {
-      scores: storage.getData('scores') || []
+      scores: []
     };
   },
-  watch: {
-    scores: 'saveData'
-  },
-  components: {
-    Game,
-    Score
+  created () {
+    this.setScore()
   },
   methods: {
     saveData() {
-      storage.setData('scores', this.scores)
+      localStorage.setItem('scores', JSON.stringify(this.scores))
+    },
+    setScore() {
+      this.scores = JSON.parse(localStorage.scores || '[]');
     }
   }
 }
@@ -43,4 +45,13 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+ ul {
+   display: inline-flex;
+   list-style: none;
+   padding: 0;
+ }
+ li {
+   padding: 10px;
+ }
+
 </style>
