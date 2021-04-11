@@ -2,12 +2,14 @@
   <div id="score">
     <h2>せいせき</h2>
     <button type="button" @click.prevent="dataReset">クリア</button>
-    <ul v-if="scores">
-      <li v-for="(score, i) of $parent.$data.scores" v-bind:key="score.id">
-        <span>{{ (i + 1) }}:</span>
-        {{ score.message }}
-      </li>
-    </ul>
+    <div class="inner">
+      <ul v-if="scores">
+        <li v-for="(score, i) of $parent.$data.scores" v-bind:key="score.id">
+          <span>{{ (i + 1) }}:</span>
+          {{ score.message }}
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -27,5 +29,14 @@ export default {
 </script>
 
 <style scoped>
+#score {
 
+}
+
+ul {
+  text-align: left;
+  display: inline-block;
+  list-style: none;
+  padding-right: 40px;
+}
 </style>

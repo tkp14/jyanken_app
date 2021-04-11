@@ -28,11 +28,11 @@
     props: ['scores'],
     data () {
       return {
-        src: '@/assets/imgs/janken_choki.png',
+        src: '',
         imgList: [
+          require('@/assets/imgs/janken_gu.png'),
           require('@/assets/imgs/janken_choki.png'),
-          require('@/assets/imgs/janken_pa.png'),
-          require('@/assets/imgs/janken_gu.png')
+          require('@/assets/imgs/janken_pa.png')
         ],
         timer: null,
         resultMessage: ''
@@ -60,8 +60,8 @@
         clearInterval(this.timer);
 
         let button = e.target;
-        let resultNum = parseInt(this.imgList.indexOf(this.src), 10);
         let selectNum = parseInt(button.value, 10);
+        let resultNum = parseInt(this.imgList.indexOf(this.src), 10);
         let decision = this.decisionJanken(selectNum, resultNum);
 
         var btns = document.querySelectorAll('.button');
@@ -89,15 +89,16 @@
       },
       decisionJanken(myHand, youHand) {
         let result = 0; // 0は負け、1は勝ち、2は引き分け
+        // デフォルトのyouHandは 0(グー)
         switch(myHand) {
-          case 'myHand(0)':
-            youHand(1);
+          case youHand: // グー
+            result = 2;
             break;
-          case 'myHand(1)':
-            youHand(0);
+          case (youHand + 1) % 3: // チョキ
+            result;
             break;
-          case 'myHand(2)':
-            youHand(2);
+          case (youHand + 2) % 3: // パー
+            result = 1;
             break;
           //ジャンケンの判定
         }
