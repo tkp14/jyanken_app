@@ -37,6 +37,10 @@ ul {
   text-align: left;
   display: inline-block;
   list-style: none;
-  padding-right: 40px;
+  padding-right: 0;
+}
+
+span{
+  color: red;
 }
 </style>

@@ -113,6 +113,11 @@
   margin: 0 auto;
 }
 
+.result {
+  font-weight: bold;
+  font-size: 30px;
+}
+
 img {
   width: 50ox;
   height: 50px;
