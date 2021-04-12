@@ -6,7 +6,7 @@
       <li><router-link to="/score">スコア</router-link></li>
     </ul>
     <div class="inner">
-      <transition name="fade">
+      <transition name="fade" mode="out-in">
         <router-view scores="scores"></router-view>
       </transition>
     </div>
@@ -54,4 +54,13 @@ export default {
    padding: 10px;
  }
 
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
 </style>
