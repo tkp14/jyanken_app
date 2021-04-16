@@ -8,7 +8,7 @@ module.exports = {
   dev: {
 
     // Paths
-    
+
     assetsPublicPath: '/',
     proxyTable: {},
 
@@ -50,7 +50,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../docs'),
 
-    assetsPublicPath: './',
+    assetsPublicPath: '/',
 
     /**
      * Source Maps
