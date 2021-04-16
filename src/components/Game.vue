@@ -30,9 +30,9 @@
       return {
         src: '',
         imgList: [
-          require('@/assets/imgs/janken_gu.png'),
-          require('@/assets/imgs/janken_choki.png'),
-          require('@/assets/imgs/janken_pa.png')
+          'public/janken_gu.png',
+          'public/janken_choki.png',
+          'public/imgs/janken_pa.png'
         ],
         timer: null,
         resultMessage: ''
