@@ -52,6 +52,9 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: './',
 
+    outputDir: 'docs',
+    assetsDir: './',
+    publicPath: './',
     /**
      * Source Maps
      */
